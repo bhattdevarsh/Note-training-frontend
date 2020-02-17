@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Note page
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col size='10' pull='1' push='1'>
+      <ion-card style="border-radius: 20px;">
+        <ion-card-header>
+          <ion-card-title color="primary">{{pageTitle}}</ion-card-title>
+        </ion-card-header>
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">Title :</ion-label>
+            <ion-input type="text" [(ngModel)]="title"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Description :</ion-label>
+            <ion-input type="text" [(ngModel)]="description"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="!isProposed">
+            <ion-button fill="outline" *ngIf='flag' (click)='createNote()'>
+              Create
+            </ion-button>
+            <ion-button fill="outline" *ngIf='!flag' (click)='update()'>
+              Update
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>

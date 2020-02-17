@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Note page
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col size='8' push='2'>
+      <ion-card style="border-radius: 20px;">
+        <ion-card-header>
+          <ion-card-title color="primary">{{noteTitle}}</ion-card-title>
+        </ion-card-header>
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">Title :</ion-label>
+            <ion-input type="text" [disabled]="isProposed" [(ngModel)]="title"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Description :</ion-label>
+            <ion-input type="text" [disabled]="isProposed" [(ngModel)]="description"></ion-input>
+          </ion-item>
+
+        </ion-list>
+      </ion-card>
+      <!-- Manager Role -->
+      <ion-card style="border-radius: 20px;" *ngIf="isProposed">
+        <ion-card-header>
+          <ion-card-title color="primary">Poposed Note</ion-card-title>
+        </ion-card-header>
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">Title :</ion-label>
+            <ion-input type="text" [(ngModel)]="proposedTitle"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Description :</ion-label>
+            <ion-input type="text" [(ngModel)]="proposedDescription"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-button color="danger" *ngIf='isProposed' (click)='reject()'>
+              Reject
+            </ion-button>
+            <ion-button color="success" *ngIf='isProposed' (click)='approve()'>
+              Approve
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>
